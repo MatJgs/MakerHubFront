@@ -10,6 +10,17 @@ import { SujetCreateComponent } from './components/sujet-create/sujet-create.com
 import {ReactiveFormsModule} from "@angular/forms";
 import { SujetDetailsComponent } from './components/sujet-details/sujet-details.component';
 import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {
+  NbActionsModule,
+  NbContextMenuModule,
+  NbFormFieldModule,
+  NbInputModule,
+  NbLayoutModule,
+  NbThemeModule
+} from "@nebular/theme";
+import {NbEvaIconsModule} from "@nebular/eva-icons";
 
 @NgModule({
   declarations: [
@@ -17,13 +28,15 @@ import { HeaderComponent } from './components/header/header.component';
     SujetComponent,
     SujetCreateComponent,
     SujetDetailsComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,35 +1,21 @@
 
 <h2>Liste des sujets</h2><br>
+<ul>
+  <li *ngFor="let sujet of sujetList">
+    <div class="titre">
+      <a [routerLink]="[sujet.id]">{{sujet.id}} {{sujet.titre}}</a>
+    </div><br>
 
-<table class="table">
-  <thead>
-  <tr>
-    <th scope="col">Id</th>
-    <th scope="col">Titre</th>
-    <th scope="col">Desc</th>
-    <th scope="col">Arguments</th>
-    <th scope="col">Date</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let sujet of sujetList">
-    <th scope="row">
-      {{sujet.id}}
-    </th>
-    <td>
-      {{sujet.titre}}
-    </td>
-    <td>
-      {{sujet.description}}
-    </td>
-    <td>
-      {{sujet.argumentations}}
-    </td>
-    <td>{{sujet.dateCreation}}</td>
-    <td>
-      <button [routerLink]="[sujet.id]">Détail</button>
-    </td>
-  </tr>
+    <div class="description">
+      {{sujet.description}}<br>
+      {{sujet.dateCreation}}
+    </div>
+    <br>
+    <button [routerLink]="[sujet.id]">Détail</button>
+  </li>
+</ul>
 
-  </tbody>
-</table>
+
+
+
+

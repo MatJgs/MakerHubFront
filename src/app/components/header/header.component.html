@@ -1,9 +1,9 @@
-<div class="container mx-auto">
-  <div class="border-b border-gray-200">
-    <nav class="-mb-px flex space-x-8" aria-label="Tabs">
-      <a routerLink="/sujet" routerLinkActive="border-indigo-500 text-indigo-600" [routerLinkActiveOptions]="{ exact: true }" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium">Sujet</a>
-
-      <a routerLink="/sujet/create" routerLinkActive="border-indigo-500 text-indigo-600" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium">Create</a>
-    </nav>
-  </div>
-</div>
+<header class="header">
+  <h1 class="logo"><a href="sujet">Techn'Opinion</a></h1>
+  <ul class="main-nav">
+    <li><a routerLink="sujet">Home</a></li>
+    <li><a routerLink="sujet/create">Create</a></li>
+    <li><a routerLink="">Portfolio</a></li>
+    <li><a routerLink="">Contact</a></li>
+  </ul>
+</header>
