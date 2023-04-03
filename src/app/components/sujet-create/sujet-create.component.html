@@ -1,0 +1,10 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h2>Créer une salle</h2>
+  <label>Titre</label><br>
+  <input type="text" placeholder="titre du sujet" formControlName="titre"/><br>
+  <label>Description</label><br>
+  <input type="text" placeholder="description du sujet" formControlName="description"/><br>
+
+
+  <button type="submit">submit</button>
+</form>

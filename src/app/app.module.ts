@@ -2,13 +2,28 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { SujetComponent } from './components/sujet/sujet.component';
+import {RouterOutlet} from "@angular/router";
+import {AppRoutingModule} from "./app-routing.modules";
+import { HttpClientModule} from "@angular/common/http";
+import { SujetCreateComponent } from './components/sujet-create/sujet-create.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import { SujetDetailsComponent } from './components/sujet-details/sujet-details.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SujetComponent,
+    SujetCreateComponent,
+    SujetDetailsComponent,
+    HeaderComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
