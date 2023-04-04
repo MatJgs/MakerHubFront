@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Sujet} from "../../models/sujet.model";
 import {SujetsService} from "../../services/sujets.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {Argument} from "../../models/arguments.model";
+import {ArgumentService} from "../../services/argument.service";
 
 @Component({
   selector: 'app-sujet-details',
@@ -11,10 +13,12 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class SujetDetailsComponent implements OnInit{
 
   sujet!:Sujet;
+  arguments!:Argument[];
 
   constructor(
     private readonly _sujetService:SujetsService,
     private readonly _activatedRouter:ActivatedRoute,
+    private readonly _argumentService:ArgumentService,
     private readonly _router:Router
   ) {
   }
@@ -25,11 +29,13 @@ export class SujetDetailsComponent implements OnInit{
     this._sujetService.getOne(sujetID).subscribe({
       next:(sujet)=>{
         this.sujet=sujet;
+
       },
       error:()=>{
         this._router.navigate(['/sujet']);
       }
     })
+
   }
 
 }

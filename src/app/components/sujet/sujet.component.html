@@ -1,19 +1,43 @@
 
-<h2>Liste des sujets</h2><br>
-<ul>
-  <li *ngFor="let sujet of sujetList">
-    <div class="titre">
-      <a [routerLink]="[sujet.id]">{{sujet.id}} {{sujet.titre}}</a>
-    </div><br>
+<h1>Liste des sujets</h1>
 
-    <div class="description">
-      {{sujet.description}}<br>
-      {{sujet.dateCreation}}
+<ul style="--length: 5" content="">
+  <li style="--i: 1" *ngFor="let sujet of sujetList" >
+
+    <button class="détail" [routerLink]="[sujet.id]">Détail</button>
+    <div class="date" >
+      {{sujet.dateCreation}}<br>
+
+
     </div>
-    <br>
-    <button [routerLink]="[sujet.id]">Détail</button>
+    <h3><a [routerLink]="[sujet.id]">{{sujet.id}} {{sujet.titre}}</a></h3>
+<!--   <div> par {{sujet.sujetBy.firstName}}</div>-->
+    <div>
+      {{sujet.description}}
+    </div>
+    <button class="argumenter" routerLink="">Argumenter</button>
+    <button class="contreargumenter" routerLink="">Contre-argumenter</button>
+
   </li>
 </ul>
+
+<!--<ul>-->
+<!--  <li *ngFor="let sujet of sujetList">-->
+
+<!--    <div class="titre">-->
+<!--      <h2><a [routerLink]="[sujet.id]">{{sujet.id}} {{sujet.titre}}</a></h2>-->
+<!--    </div>-->
+
+<!--    <br>-->
+<!--    <div class="date">-->
+<!--      {{sujet.dateCreation}}-->
+<!--    </div>-->
+<!--    <div class="description">-->
+<!--      {{sujet.description}}<br>-->
+<!--    </div>-->
+<!--    <br>-->
+<!--  </li>-->
+<!--</ul>-->
 
 
 

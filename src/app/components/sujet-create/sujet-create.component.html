@@ -1,5 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <h2>Créer une salle</h2>
+  <h2>Créer un Sujet</h2>
+  <label>Auteur id</label><br>
+  <input type="text" placeholder="id" formControlName="auteurId"/><br>
   <label>Titre</label><br>
   <input type="text" placeholder="titre du sujet" formControlName="titre"/><br>
   <label>Description</label><br>

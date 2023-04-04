@@ -1,29 +1,49 @@
-<table class="table">
-  <thead>
-  <tr>
-    <th scope="col">Titre</th>
-    <th scope="col">Desc</th>
-    <th scope="col">Date</th>
-    <th scope="col">Arguments</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <th scope="row">
-      {{sujet.titre}}
-    </th>
+<div class="container">
+<button class="retour" routerLink="/sujet">Retour</button>
+  <ul style="--length: 5" content="">
+    <li style="--i: 1" >
+      <div class="date" >
+        {{sujet.dateCreation}}<br>
 
-    <td>
-      {{sujet.description}}
-    </td>
-    <td>
-      {{sujet.dateCreation}}
-    </td>
-    <td>
-      {{sujet.argumentations}}
+      </div>
+      <h3> {{sujet.id}} {{sujet.titre}}</h3>
+<!--      <div> par {{sujet.sujetBy.lastName}}</div>-->
+      <div>
+        {{sujet.description}}<br>
+      </div>
+      <button class="argumenter" routerLink="">Argumenter</button>
+      <button class="contreargumenter" routerLink="">Contre-argumenter</button>
+    </li>
+  </ul>
+    <ul style="--length: 5" content="" *ngFor="let argument of sujet.argumentations">
+      <div *ngIf="argument.avis===true; else elseBlock" >
+        <li style="--i: 3" class="enfant">
 
-    </td>
-  </tr>
+          <div class="date" >
+            {{argument.dateCreation}}<br>
+          </div>
+          <div>Pour</div>
 
-  </tbody>
-</table>
+          <div>
+
+          </div>
+          {{argument.argument}}<br>
+        </li>
+      </div>
+      <ng-template #elseBlock><li style="--i: 2" class="enfant">
+
+        <div class="date" >
+          {{argument.dateCreation}}<br>
+        </div>
+        <div>Contre</div>
+
+        <div>
+
+        </div>
+        {{argument.argument}}<br>
+      </li>
+      </ng-template>
+
+    </ul>
+
+</div>
