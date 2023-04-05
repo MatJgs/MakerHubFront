@@ -23,9 +23,11 @@ export class SujetsService {
     return this._httpClient.get<Sujet>(`${this.BASE_URL}/${id}`);
   }
   create(form:SujetForm):Observable<never>{
-    console.log(form);
+
     return this._httpClient.post<never>(this.BASE_URL+'/new',form).pipe(
       tap(()=>this._sujetChanged.next(undefined))
     )
   }
+
+
 }

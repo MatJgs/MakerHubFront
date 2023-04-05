@@ -1,4 +1,5 @@
 import {Utilisateur} from "./utilisateur.model";
+import {Sujet} from "./sujet.model";
 
 export interface Argument{
   id:number;
@@ -6,4 +7,5 @@ export interface Argument{
   argument:string;
   avis:boolean;
   argumentBy:Utilisateur;
+  sujet:Sujet;
 }

@@ -15,6 +15,8 @@ export class SujetDetailsComponent implements OnInit{
   sujet!:Sujet;
   arguments!:Argument[];
 
+  loading= true;
+
   constructor(
     private readonly _sujetService:SujetsService,
     private readonly _activatedRouter:ActivatedRoute,
@@ -24,11 +26,13 @@ export class SujetDetailsComponent implements OnInit{
   }
 
   ngOnInit() {
+
     const sujetID = this._activatedRouter.snapshot.params['id'];
 
     this._sujetService.getOne(sujetID).subscribe({
       next:(sujet)=>{
         this.sujet=sujet;
+        this.loading = false;
 
       },
       error:()=>{

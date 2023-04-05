@@ -134,19 +134,16 @@ button:hover {
   color: white;
   background: #d85c5a;
 }
-.argumenter,.contreargumenter{
+.argumenter{
   display: inline-block;
   margin-top: 50px;
   width: 120px;
+  height: auto;
+  margin-left: 45%;
+  margin-right: 45%;
 }
-.argumenter{
-  float: left;
-  margin-left: 20%;
-}
-.contreargumenter{
-  float: right;
-  margin-right: 20%;
-}
+
+
 .enfant{
   margin-left: 18%;
 

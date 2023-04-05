@@ -1,43 +1,27 @@
 
 <h1>Liste des sujets</h1>
-
+<button class="create" routerLink="new">Créer sujet</button>
 <ul style="--length: 5" content="">
   <li style="--i: 1" *ngFor="let sujet of sujetList" >
 
     <button class="détail" [routerLink]="[sujet.id]">Détail</button>
     <div class="date" >
-      {{sujet.dateCreation}}<br>
+      {{sujet.dateCreation | date:"dd/MM/yyyy"}}<br>
 
 
     </div>
     <h3><a [routerLink]="[sujet.id]">{{sujet.id}} {{sujet.titre}}</a></h3>
-<!--   <div> par {{sujet.sujetBy.firstName}}</div>-->
+   <div> par {{sujet.madeBy.firstName}}</div>
+    <br>
     <div>
       {{sujet.description}}
     </div>
-    <button class="argumenter" routerLink="">Argumenter</button>
-    <button class="contreargumenter" routerLink="">Contre-argumenter</button>
+
 
   </li>
 </ul>
 
-<!--<ul>-->
-<!--  <li *ngFor="let sujet of sujetList">-->
 
-<!--    <div class="titre">-->
-<!--      <h2><a [routerLink]="[sujet.id]">{{sujet.id}} {{sujet.titre}}</a></h2>-->
-<!--    </div>-->
-
-<!--    <br>-->
-<!--    <div class="date">-->
-<!--      {{sujet.dateCreation}}-->
-<!--    </div>-->
-<!--    <div class="description">-->
-<!--      {{sujet.description}}<br>-->
-<!--    </div>-->
-<!--    <br>-->
-<!--  </li>-->
-<!--</ul>-->
 
 
 

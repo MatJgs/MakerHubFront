@@ -11,6 +11,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { SujetDetailsComponent } from './components/sujet-details/sujet-details.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ArgumentCreateComponent } from './components/argument-create/argument-create.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { FooterComponent } from './components/footer/footer.component';
     SujetCreateComponent,
     SujetDetailsComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ArgumentCreateComponent
   ],
   imports: [
     BrowserModule,

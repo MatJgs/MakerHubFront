@@ -11,7 +11,7 @@ import {SUJET_FORM} from "../../models/sujets.form";
   styleUrls: ['./sujet-create.component.css']
 })
 export class SujetCreateComponent {
-  arguments!: Argument[];
+
   form:FormGroup;
 
   constructor(
@@ -22,6 +22,7 @@ export class SujetCreateComponent {
     this.form = builder.group(SUJET_FORM);
   }
   onSubmit(){
+
     if (this.form.valid){
       this._sujetService.create(this.form.value).subscribe({
         next:()=>{

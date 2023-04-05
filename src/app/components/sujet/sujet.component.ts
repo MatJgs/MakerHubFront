@@ -16,7 +16,10 @@ export class SujetComponent implements OnInit{
 
   ngOnInit() {
     this._sujetService.getAll().subscribe({
-      next:data => this.sujetList=data,
+      next:data => {
+        this.sujetList = data;
+
+      },
       error:console.error
     })
   }

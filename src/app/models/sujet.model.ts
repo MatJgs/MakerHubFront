@@ -6,6 +6,6 @@ export interface Sujet{
   titre:string;
   dateCreation:Date;
   description:string;
-  sujetBy:Utilisateur;
+  madeBy:Utilisateur;
   argumentations:Argument[];
 }

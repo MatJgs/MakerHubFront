@@ -1,26 +1,28 @@
 <div class="container">
-<button class="retour" routerLink="/sujet">Retour</button>
-  <ul style="--length: 5" content="">
-    <li style="--i: 1" >
-      <div class="date" >
-        {{sujet.dateCreation}}<br>
+  <button class="retour" routerLink="/sujet">Retour</button>
+  <div *ngIf="!loading">
+    <ul style="--length: 5" content="">
+      <li style="--i: 1" >
+        <div class="date" >
+          {{sujet.dateCreation|date:'dd/MM/yyyy'}}<br>
 
-      </div>
-      <h3> {{sujet.id}} {{sujet.titre}}</h3>
-<!--      <div> par {{sujet.sujetBy.lastName}}</div>-->
-      <div>
-        {{sujet.description}}<br>
-      </div>
-      <button class="argumenter" routerLink="">Argumenter</button>
-      <button class="contreargumenter" routerLink="">Contre-argumenter</button>
-    </li>
-  </ul>
+        </div>
+        <h3> {{sujet.id}} {{sujet.titre}}</h3>
+        <div> par {{sujet.madeBy.firstName}}</div>
+        <br>
+        <div>
+          {{sujet.description}}<br>
+        </div>
+        <button class="argumenter" [routerLink]="'/sujet/'+sujet.id+'/argument/new'">Donner son avis</button>
+
+      </li>
+    </ul>
     <ul style="--length: 5" content="" *ngFor="let argument of sujet.argumentations">
-      <div *ngIf="argument.avis===true; else elseBlock" >
+      <div *ngIf="argument.avis" >
         <li style="--i: 3" class="enfant">
 
           <div class="date" >
-            {{argument.dateCreation}}<br>
+            {{argument.dateCreation|date: 'dd/MM/yyyy'}}<br>
           </div>
           <div>Pour</div>
 
@@ -30,10 +32,11 @@
           {{argument.argument}}<br>
         </li>
       </div>
-      <ng-template #elseBlock><li style="--i: 2" class="enfant">
+      <div *ngIf="!argument.avis">
+        <li style="--i: 2" class="enfant">
 
         <div class="date" >
-          {{argument.dateCreation}}<br>
+          {{argument.dateCreation|date: 'dd/MM/yyyy'}}<br>
         </div>
         <div>Contre</div>
 
@@ -42,8 +45,8 @@
         </div>
         {{argument.argument}}<br>
       </li>
-      </ng-template>
-
+      </div>
     </ul>
+  </div>
 
 </div>
