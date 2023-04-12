@@ -6,6 +6,6 @@ export interface Argument{
   dateCreation:Date;
   argument:string;
   avis:boolean;
-  argumentBy:Utilisateur;
+  madeBy:Utilisateur;
   sujet:Sujet;
 }

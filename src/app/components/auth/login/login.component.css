@@ -1,0 +1,27 @@
+form{
+  margin-top: 5%;
+  margin-left: 40%;
+  width: 20%;
+  box-shadow: 0.1rem 0.1rem 1.5rem rgba(0, 0, 0, 0.3);
+  background: whitesmoke;
+  padding: 1% 1% 1% 1%;
+}
+button{
+  margin-top: 4%;
+}
+form{
+  border: 1px solid #a2a2a2;
+  text-align: center;
+}
+button{
+  background: #efcac9;
+  color: #020101;
+  height: 40px;
+  width: 75px;
+  font-weight: bold;
+}
+button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  color: white;
+  background: #d85c5a;
+}

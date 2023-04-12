@@ -1,4 +1,4 @@
-<button class="retour" routerLink="/sujet">Retour</button>
+<button class="retour btn" routerLink="/sujet">Retour</button>
 <div class="contain">
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="was-validated">
   <h2>Créer un Argument</h2><br>
@@ -14,28 +14,18 @@
   </div>
 
 </div>
-  <div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Auteur id</label>
-    <input type="number" class="form-control" formControlName="auteurId" id="exampleFormControlInput1" placeholder="id" required max="2" min="1">
-  </div>
+<!--  <div class="mb-3">-->
+<!--    <label for="exampleFormControlInput1" class="form-label">Auteur id</label>-->
+<!--    <input type="number" class="form-control" formControlName="auteurId" id="exampleFormControlInput1" placeholder="id" required max="2" min="1">-->
+<!--  </div>-->
   <div class="mb-3">
     <label for="validationTextarea" class="form-label">Argument</label>
     <textarea class="form-control is-invalid" formControlName="argument" id="validationTextarea" placeholder="Required example textarea" required minlength="10"></textarea>
 
   </div>
-  <button class="btn btn-primary" type="submit">Submit form</button>
+  <button class="btn" type="submit">Créer</button>
 </form>
-<!--  <label>Avis</label><br>-->
-<!--  <input type="radio" id="Pour" value="true"  formControlName="avis"/><label for="Pour">Pour</label><br>-->
-<!--  <input type="radio" id="Contre" value="false" formControlName="avis"/><label for="Contre">Contre</label><br>-->
-<!--  <label>Auteur id</label><br>-->
-<!--  <input type="text" placeholder="id" formControlName="auteurId"/><br>-->
-<!--  <label>Argument</label><br>-->
-<!--  <input type="text" placeholder="argument" formControlName="argument"/><br>-->
 
-
-
-<!--  <button type="submit">submit</button>-->
 
 
 </div>

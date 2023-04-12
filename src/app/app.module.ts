@@ -7,12 +7,13 @@ import { SujetComponent } from './components/fonctions/sujet/sujet.component';
 import {AppRoutingModule} from "./app-routing.modules";
 import { HttpClientModule} from "@angular/common/http";
 import { SujetCreateComponent } from './components/fonctions/sujet-create/sujet-create.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { SujetDetailsComponent } from './components/fonctions/sujet-details/sujet-details.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ArgumentCreateComponent } from './components/fonctions/argument-create/argument-create.component';
 import { LoginComponent } from './components/auth/login/login.component';
+import {Ng2SearchPipeModule} from "ng2-search-filter";
 
 
 @NgModule({
@@ -24,13 +25,16 @@ import { LoginComponent } from './components/auth/login/login.component';
     HeaderComponent,
     FooterComponent,
     ArgumentCreateComponent,
-    LoginComponent
+    LoginComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
+    Ng2SearchPipeModule
 
   ],
   providers: [],

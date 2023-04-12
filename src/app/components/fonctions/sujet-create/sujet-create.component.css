@@ -17,16 +17,23 @@ label{
 form{
   border: 1px solid #a2a2a2;
 }
-.retour{
+button{
   background: #efcac9;
   color: #020101;
   height: 40px;
-  width: 75px;
+  width: auto;
   font-weight: bold;
+
 }
-.retour:hover {
+button:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   color: white;
   background: #d85c5a;
+}
+.btn{
+  margin-left: 44%;
+}
+.submit{
+  margin-top: 5%;
 }
 

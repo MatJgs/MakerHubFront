@@ -7,6 +7,7 @@ import {ArgumentService} from "../../../services/argument.service";
 import {ARGUMENT_FORM} from "../../../models/argument.form";
 import {Sujet} from "../../../models/sujet.model";
 import {Argument} from "../../../models/arguments.model";
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'app-argument-create',
@@ -19,12 +20,14 @@ export class ArgumentCreateComponent implements OnInit{
   form: FormGroup;
   sujetID?:number;
   argument!:Argument;
+  username?:string;
 
   constructor(
     private readonly _argumentService: ArgumentService,
     private readonly _activatedRouter: ActivatedRoute,
     private readonly _sujetService:SujetsService,
     private readonly _router: Router,
+    private readonly _authService:AuthService,
     builder: FormBuilder
   ) {
     this.form = builder.group(ARGUMENT_FORM);
@@ -42,7 +45,8 @@ export class ArgumentCreateComponent implements OnInit{
   onSubmit() {
     console.log(this.form);
     if (this.form.valid) {
-      this._argumentService.create(this.form.value,this.sujetID!).subscribe({
+      this.username=this._authService.user?.username;
+      this._argumentService.create(this.form.value,this.sujetID!,this.username!).subscribe({
         next: () => {
           this._router.navigate(['sujet/',this.sujetID]);
 

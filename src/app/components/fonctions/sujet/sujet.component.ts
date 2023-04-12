@@ -10,6 +10,7 @@ import {SujetsService} from "../../../services/sujets.service";
 export class SujetComponent implements OnInit{
 
   sujetList!:Sujet[];
+  searchText:any;
 
   constructor(private readonly _sujetService:SujetsService) {
   }

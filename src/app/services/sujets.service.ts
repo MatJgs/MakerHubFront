@@ -22,8 +22,8 @@ export class SujetsService {
   getOne(id:number){
     return this._httpClient.get<Sujet>(`${this.BASE_URL}/${id}`);
   }
-  create(form:SujetForm):Observable<never>{
-
+  create(form:SujetForm,username:string):Observable<never>{
+    form.userLogin = username;
     return this._httpClient.post<never>(this.BASE_URL+'/new',form).pipe(
       tap(()=>this._sujetChanged.next(undefined))
     )

@@ -130,7 +130,7 @@ button{
   background: #efcac9;
   color: #020101;
   height: 40px;
-  width: 75px;
+  width: auto;
   font-weight: bold;
 }
 button:hover {
@@ -138,16 +138,8 @@ button:hover {
   color: white;
   background: #d85c5a;
 }
-.argumenter,.contreargumenter{
-  display: inline-block;
-  margin-top: 50px;
-  width: 120px;
+.search{
+  width: 50%;
+  margin-left: 25%;
 }
-.argumenter{
-  float: left;
-  margin-left: 20%;
-}
-.contreargumenter{
-  float: right;
-  margin-right: 20%;
-}
+

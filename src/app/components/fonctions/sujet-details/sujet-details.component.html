@@ -1,5 +1,6 @@
 <div class="container">
-  <button class="retour" routerLink="/sujet">Retour</button>
+  <button class="retour btn" routerLink="/sujet">Retour</button>
+  <br>
   <div *ngIf="!loading">
     <ul style="--length: 5" content="">
       <li style="--i: 1" >
@@ -13,7 +14,7 @@
         <div>
           {{sujet.description}}<br>
         </div>
-        <button class="argumenter" [routerLink]="'/sujet/'+sujet.id+'/argument/new'">Donner son avis</button>
+        <button class="argumenter btn" [routerLink]="'/sujet/'+sujet.id+'/argument/new'">Donner son avis</button>
 
       </li>
     </ul>
@@ -21,13 +22,15 @@
       <div *ngIf="argument.avis" >
         <li style="--i: 3" class="enfant">
 
+
+
           <div class="date" >
             {{argument.dateCreation|date: 'dd/MM/yyyy'}}<br>
           </div>
-          <div>Pour</div>
+          <div><h4>Pour</h4></div>
 
           <div>
-
+            par {{argument.madeBy.firstName}}
           </div>
           {{argument.argument}}<br>
         </li>
@@ -38,10 +41,10 @@
         <div class="date" >
           {{argument.dateCreation|date: 'dd/MM/yyyy'}}<br>
         </div>
-        <div>Contre</div>
+        <div><h4>Contre</h4></div>
 
         <div>
-
+          par {{argument.madeBy.firstName}}
         </div>
         {{argument.argument}}<br>
       </li>

@@ -1,23 +1,23 @@
 
 
 <div class="contain">
-  <button class="retour" routerLink="/sujet">Retour</button>
+  <button class="retour btn" routerLink="/sujet">Retour</button>
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="was-validated">
     <h2>Créer un Sujet</h2><br>
     <div class="mb-3">
       <label for="titre" class="form-label">Titre</label>
       <input type="text" class="form-control" formControlName="titre" id="titre" placeholder="titre" required minlength="3">
     </div>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Auteur id</label>
-      <input type="number" class="form-control" formControlName="auteurId" id="exampleFormControlInput1" placeholder="id" required max="2" min="1">
-    </div>
+<!--    <div class="mb-3">-->
+<!--      <label for="exampleFormControlInput1" class="form-label">Auteur id</label>-->
+<!--      <input type="number" class="form-control" formControlName="auteurId" id="exampleFormControlInput1" placeholder="id" required max="2" min="1">-->
+<!--    </div>-->
     <div class="mb-3">
       <label for="validationTextarea" class="form-label">Argument</label>
       <textarea class="form-control is-invalid" formControlName="description" id="validationTextarea" placeholder="explication de son point de vue" required minlength="10"></textarea>
 
     </div>
-    <button class="btn btn-primary" type="submit">Submit form</button>
+    <button class="btn submit" type="submit">Créer</button>
   </form>
 
 
