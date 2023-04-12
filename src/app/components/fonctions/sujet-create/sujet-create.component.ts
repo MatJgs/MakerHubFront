@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import {Argument} from "../../models/arguments.model";
+import {Argument} from "../../../models/arguments.model";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {SujetsService} from "../../services/sujets.service";
+import {SujetsService} from "../../../services/sujets.service";
 import {Router} from "@angular/router";
-import {SUJET_FORM} from "../../models/sujets.form";
+import {SUJET_FORM} from "../../../models/sujets.form";
 
 @Component({
   selector: 'app-sujet-create',
@@ -22,7 +22,6 @@ export class SujetCreateComponent {
     this.form = builder.group(SUJET_FORM);
   }
   onSubmit(){
-
     if (this.form.valid){
       this._sujetService.create(this.form.value).subscribe({
         next:()=>{
