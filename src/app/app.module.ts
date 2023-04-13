@@ -14,6 +14,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ArgumentCreateComponent } from './components/fonctions/argument-create/argument-create.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import {Ng2SearchPipeModule} from "ng2-search-filter";
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    NgxPaginationModule
 
   ],
   providers: [],

@@ -25,7 +25,7 @@ export class AuthService {
     return this._client.post<Auth>(`${this.BASE_URL}/login`, form).pipe(
       tap(data => {
         this.user = data;
-        console.log(this.user);
+
       })
     )
   }

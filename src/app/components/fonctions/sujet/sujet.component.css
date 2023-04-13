@@ -29,7 +29,7 @@ li {
   --c2: hsl(var(--h), 71%, var(--l2));
 
   position: relative;
-  max-width: 60%;
+  max-width: 70%;
   height: auto;
   margin: 2rem auto;
   padding: 2rem 1rem 1rem;
@@ -118,8 +118,6 @@ a:hover{
   margin-right: 5%;
   margin-top: 1%;
 
-
-
 }
 .détail{
   float: right;
@@ -141,5 +139,9 @@ button:hover {
 .search{
   width: 50%;
   margin-left: 25%;
+}
+pagination-controls{
+  text-align: center;
+
 }
 

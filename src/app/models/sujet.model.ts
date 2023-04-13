@@ -8,4 +8,6 @@ export interface Sujet{
   description:string;
   madeBy:Utilisateur;
   argumentations:Argument[];
+  enable:boolean;
+  hidden:boolean;
 }

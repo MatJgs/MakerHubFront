@@ -33,7 +33,7 @@ export class SujetCreateComponent implements OnInit{
     if (this.form.valid){
 
       this.username=this._authService.user?.username;
-      console.log(this.username);
+
       this._sujetService.create(this.form.value,this.username!).subscribe({
         next:()=>{
           this._router.navigate(['sujet']);

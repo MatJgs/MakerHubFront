@@ -24,9 +24,18 @@ export class SujetsService {
   }
   create(form:SujetForm,username:string):Observable<never>{
     form.userLogin = username;
+
     return this._httpClient.post<never>(this.BASE_URL+'/new',form).pipe(
       tap(()=>this._sujetChanged.next(undefined))
     )
+  }
+  cloture(id:number,username:string){
+
+      return this._httpClient.post<never>(this.BASE_URL+'/cloture/'+id,username);
+  }
+  cacher(id:number,username:string){
+
+    return this._httpClient.post<never>(this.BASE_URL+'/cacher/'+id,username);
   }
 
 
