@@ -1,3 +1,5 @@
+import {Validators} from "@angular/forms";
+
 export interface SujetForm{
   titre:string;
   description:string;
@@ -5,8 +7,8 @@ export interface SujetForm{
   argumentsId:number[];
 }
 export const SUJET_FORM={
-  'titre':[],
-  'description':[],
+  'titre':['',[Validators.maxLength(50),Validators.minLength(5)]],
+  'description':['',[Validators.minLength(10),Validators.maxLength(300)]],
   'argumentsId':[],
   'userLogin':[]
 }

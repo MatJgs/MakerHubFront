@@ -1,3 +1,5 @@
+import {Validators} from "@angular/forms";
+
 export interface ArgumentForm{
   argument:string;
   avis:boolean;
@@ -5,7 +7,7 @@ export interface ArgumentForm{
   sujetId:number;
 }
 export const ARGUMENT_FORM={
-  'argument':[],
+  'argument':['',[Validators.minLength(10),Validators.maxLength(300)]],
   'avis':[],
   'userLogin':[],
   'sujetId':[]

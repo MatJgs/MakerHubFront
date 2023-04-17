@@ -5,7 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Argument} from "../../../models/arguments.model";
 import {ArgumentService} from "../../../services/argument.service";
 import {AuthService} from "../../../services/auth.service";
-import {Utilisateur} from "../../../models/utilisateur.model";
+
 
 @Component({
   selector: 'app-sujet-details',

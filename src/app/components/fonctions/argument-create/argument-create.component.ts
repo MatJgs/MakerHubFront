@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {SujetsService} from "../../../services/sujets.service";
 import {ActivatedRoute, Router} from "@angular/router";
-
 import {ArgumentService} from "../../../services/argument.service";
 import {ARGUMENT_FORM} from "../../../models/argument.form";
 import {Sujet} from "../../../models/sujet.model";

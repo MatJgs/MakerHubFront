@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Argument} from "../../../models/arguments.model";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {SujetsService} from "../../../services/sujets.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -28,7 +27,7 @@ export class SujetCreateComponent implements OnInit{
 
   ngOnInit(): void {
 
-    }
+  }
   onSubmit(){
     if (this.form.valid){
 
@@ -38,8 +37,8 @@ export class SujetCreateComponent implements OnInit{
         next:()=>{
           this._router.navigate(['sujet']);
         }
-    } )
-  }
+      } );
+    }
 
   }
 

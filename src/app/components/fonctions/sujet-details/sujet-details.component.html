@@ -3,57 +3,117 @@
   <br>
   <div *ngIf="!loading">
     <ul style="--length: 5" content="">
-      <li style="--i: 1" ><div class="boutons">
-        <ng-container *ngIf="currentUser=='ROLE_TECHNOBEL'">
-          <ng-container *ngIf="!sujet.hidden">
-            <ng-container *ngIf="sujet.enable; else elseBlock">
-              <button class="btn cloture" (click)="cloture()" >Cloturer</button><br>
+
+
+      <ng-container *ngIf="sujet.enable, else elseBlock">
+        <li style="--i: 5" ><div class="boutons">
+          <ng-container *ngIf="currentUser=='ROLE_TECHNOBEL'">
+            <ng-container *ngIf="!sujet.hidden">
+
+              <ng-container *ngIf="sujet.enable; else elseBlock">
+                <button class="btn cloture" (click)="cloture()" >Cloturer</button><br>
+              </ng-container>
+
+              <ng-template #elseBlock>
+                <button class="btn cloture" (click)="cloture()" >Décloturer</button><br>
+              </ng-template>
+
             </ng-container>
-            <ng-template #elseBlock>
-              <button class="btn cloture" (click)="cloture()" >Décloturer</button><br>
-            </ng-template>
 
-          </ng-container>
-          <ng-container *ngIf="!sujet.enable">
-            <ng-container *ngIf="!sujet.hidden; else elseBlock">
-              <button  class="btn cacher" (click)="cacher()">Invisible</button><br>
+            <ng-container *ngIf="!sujet.enable">
+              <ng-container *ngIf="!sujet.hidden; else elseBlock">
+                <button  class="btn cacher" (click)="cacher()">Invisible</button><br>
+              </ng-container>
+              <ng-template #elseBlock>
+                <button  class="btn cacher" (click)="cacher()">Visible</button><br>
+              </ng-template>
+
+
             </ng-container>
-            <ng-template #elseBlock>
-              <button  class="btn cacher" (click)="cacher()">Visible</button><br>
-            </ng-template>
-
-
           </ng-container>
-        </ng-container>
-      </div>
-        <div class="date" >
-          {{sujet.dateCreation|date:'dd/MM/yyyy'}}<br>
-        </div>
 
-        <h3> {{sujet.titre}}</h3>
-        <div> par {{sujet.madeBy.firstName}} {{sujet.madeBy.lastName}}</div>
-        <br>
-        <div>
-          <ng-container *ngIf="!sujet.enable">
-            Sujet clos
+        </div>
+          <div class="date" >
+            {{sujet.dateCreation|date:'dd/MM/yyyy'}}<br>
+
+          </div>
+
+          <h3> {{sujet.titre}}</h3>
+          <div> par {{sujet.madeBy.firstName}} {{sujet.madeBy.lastName}}</div>
+          <br>
+
+          <div>
+            {{sujet.description}}<br>
+          </div>
+          <ng-container *ngIf="sujet.enable" else elseBlock>
+            <button class="argumenter btn" [routerLink]="'/sujet/'+sujet.id+'/argument/new'">Donner son avis</button>
           </ng-container>
-          <ng-container *ngIf="sujet.hidden">
-            et caché
+          <ng-template #elseBlock>
+            <button disabled class="argumenter btn" [routerLink]="'/sujet/'+sujet.id+'/argument/new'">Donner son avis</button>
+          </ng-template>
+
+
+
+        </li>
+      </ng-container>
+      <ng-template #elseBlock>
+        <li style="--i: 1" ><div class="boutons">
+          <ng-container *ngIf="currentUser=='ROLE_TECHNOBEL'">
+            <ng-container *ngIf="!sujet.hidden">
+
+              <ng-container *ngIf="sujet.enable; else elseBlock">
+                <button class="btn cloture" (click)="cloture()" >Cloturer</button><br>
+              </ng-container>
+
+              <ng-template #elseBlock>
+                <button class="btn cloture" (click)="cloture()" >Décloturer</button><br>
+              </ng-template>
+
+            </ng-container>
+
+            <ng-container *ngIf="!sujet.enable">
+              <ng-container *ngIf="!sujet.hidden; else elseBlock">
+                <button  class="btn cacher" (click)="cacher()">Invisible</button><br>
+              </ng-container>
+              <ng-template #elseBlock>
+                <button  class="btn cacher" (click)="cacher()">Visible</button><br>
+              </ng-template>
+
+
+            </ng-container>
           </ng-container>
+
         </div>
-        <div>
-          {{sujet.description}}<br>
-        </div>
-        <ng-container *ngIf="sujet.enable" else elseBlock>
-          <button class="argumenter btn" [routerLink]="'/sujet/'+sujet.id+'/argument/new'">Donner son avis</button>
-        </ng-container>
-        <ng-template #elseBlock>
-          <button disabled class="argumenter btn" [routerLink]="'/sujet/'+sujet.id+'/argument/new'">Donner son avis</button>
-        </ng-template>
+          <div class="date" >
+            {{sujet.dateCreation|date:'dd/MM/yyyy'}}<br>
+            <ng-container *ngIf="!sujet.enable">
+              Sujet clos
+            </ng-container>
+            <ng-container *ngIf="sujet.hidden">
+              et caché
+            </ng-container>
+          </div>
+
+          <h3> {{sujet.titre}}</h3>
+          <div> par {{sujet.madeBy.firstName}} {{sujet.madeBy.lastName}}</div>
+
+
+          <div><br>
+            {{sujet.description}}<br>
+          </div>
+          <ng-container *ngIf="sujet.enable" else elseBlock>
+            <button class="argumenter btn" [routerLink]="'/sujet/'+sujet.id+'/argument/new'">Donner son avis</button>
+          </ng-container>
+          <ng-template #elseBlock>
+            <button disabled class="argumenter btn" [routerLink]="'/sujet/'+sujet.id+'/argument/new'">Donner son avis</button>
+          </ng-template>
 
 
 
-      </li>
+        </li>
+      </ng-template>
+
+
     </ul>
     <ul style="--length: 5" content="" *ngFor="let argument of sujet.argumentations | paginate: { itemsPerPage: 5, currentPage: page,totalItems:count }">
       <div *ngIf="argument.avis" >
@@ -67,8 +127,8 @@
           <div><h4>Pour</h4></div>
 
           <div>
-            par {{argument.madeBy.firstName}} {{argument.madeBy.lastName}}
-          </div>
+            par {{argument.madeBy.firstName}} {{argument.madeBy.lastName}}<br>
+          </div><br>
           {{argument.argument}}<br>
         </li>
       </div>
@@ -82,7 +142,9 @@
 
         <div>
           par {{argument.madeBy.firstName}} {{argument.madeBy.lastName}}
-        </div>
+          <br>
+
+        </div><br>
         {{argument.argument}}<br>
       </li>
       </div>

@@ -14,15 +14,13 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
 
   constructor(builder: FormBuilder, private readonly _authService: AuthService,private readonly router:Router) {
-    this.form = builder.group({
-      username: [],
-      password: []
-    })
+    this.form = builder.group(LOGIN_FORM)
   }
   ngOnInit(): void {
     sessionStorage.removeItem('user_data');
   }
   connect(): void {
+
     this._authService.login(this.form.value).subscribe(()=> {
       this.router.navigateByUrl("sujet")
     });

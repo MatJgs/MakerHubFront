@@ -1,8 +1,9 @@
 <ng-container *ngIf="!isConnected">
   <form [formGroup]="form" (ngSubmit)="connect()">
     <h2>Se connecter</h2><br>
-    <input type="text" placeholder="username" class="form-control" formControlName="username"><br>
-    <input type="password" placeholder="password" class="form-control" formControlName="password"><br>
+    <input type="text" placeholder="username" class="form-control" formControlName="username" required><br>
+    <input type="password" placeholder="password" class="form-control" formControlName="password" required><br>
+
     <button type="submit" class="btn">Login</button>
   </form>
 </ng-container>

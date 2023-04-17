@@ -4,23 +4,19 @@
   <h2>Créer un Argument</h2><br>
   <div class="text-center">
   <div class="form-check form-check-inline">
-    <input type="radio" class="form-check-input" formControlName="avis" id="validationFormCheck1" name="radio-stacked inlineRadioOptions" value="true" required>
-    <label class="form-check-label" for="validationFormCheck1">Pour</label>
+    <input type="radio" class="form-check-input " formControlName="avis" id="true"  value="true" required>
+    <label class="form-check-label" for="true">Pour</label>
   </div>
 
   <div class="form-check mb-3 form-check-inline">
-    <input type="radio" class="form-check-input" formControlName="avis" id="validationFormCheck2" name="radio-stacked inlineRadioOptions" value="false" required>
-    <label class="form-check-label" for="validationFormCheck2">Contre</label>
+    <input type="radio" class="form-check-input " formControlName="avis" id="false" value="false" required>
+    <label class="form-check-label" for="false">Contre</label>
   </div>
 
 </div>
-<!--  <div class="mb-3">-->
-<!--    <label for="exampleFormControlInput1" class="form-label">Auteur id</label>-->
-<!--    <input type="number" class="form-control" formControlName="auteurId" id="exampleFormControlInput1" placeholder="id" required max="2" min="1">-->
-<!--  </div>-->
   <div class="mb-3">
     <label for="validationTextarea" class="form-label">Argument</label>
-    <textarea class="form-control is-invalid" formControlName="argument" id="validationTextarea" placeholder="Required example textarea" required minlength="10"></textarea>
+    <textarea class="form-control is-invalid" formControlName="argument" id="validationTextarea" placeholder="Required example textarea" required minlength="10" maxlength="300"></textarea>
 
   </div>
   <button class="btn" type="submit">Créer</button>
