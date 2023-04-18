@@ -1,128 +1,140 @@
 
 <h1>Liste des sujets</h1>
 <button class="create btn" routerLink="new">Créer sujet</button><br>
-<div class="search-name">
+<div class="search-name search">
   <br>
-  <input class="form-control search" type="text" name="search" [(ngModel)]="searchText" autocomplete="on" placeholder=" SEARCH  ">
+  <input class="form-control " type="text" name="search" [(ngModel)]="searchText" autocomplete="on" placeholder=" SEARCH  ">
 
-  <button class="btn" (click)="triParTitre()">tri par titre</button>
-  <button class="btn" (click)="triParDateRecente()">tri par date récente</button>
-  <button class="btn" (click)="triParDateVieille()">tri par date vieille</button>
 
 
 </div>
+<div class="tri flex-column">
+  <button class="btn btn1" (click)="triParTitre()">Alphabétique</button>
+  <div *ngIf="estTrieChrono,else elseBloc"><button class="btn btn2" (click)="triParDateRecente()">Plus récent</button></div>
+
+  <ng-template #elseBloc><button class="btn btn2" (click)="triParDateVieille()">Plus ancien</button></ng-template>
+
+
+
+  <div *ngIf="estTrieEnable,else elseBlock">
+    <button class="btn btn3" (click)="triParSujetEnable()">Sujet clos</button>
+  </div>
+  <ng-template #elseBlock>
+    <button class="btn btn3" (click)="triParSujetDisable()">Sujet actif</button>
+  </ng-template>
+</div>
 <div class="list">
-<ul style="--length: 5" content="">
+  <ul style="--length: 5" content="">
 
-  <ng-container *ngFor="let sujet of sujetList | filter:searchText | paginate: { itemsPerPage: 5, currentPage: page,totalItems:count }">
-<!--    Si role est technobel-->
-    <ng-container *ngIf="currentUser=='ROLE_TECHNOBEL'" else elseBlock>
+    <ng-container *ngFor="let sujet of sujetList | filter:searchText | paginate: { itemsPerPage: 5, currentPage: page,totalItems:count }">
+      <!--    Si role est technobel-->
+      <ng-container *ngIf="currentUser=='ROLE_TECHNOBEL'" else elseBlock>
 
-<!--      couleur du template en fonction de si il est activé ou pas-->
-      <ng-container *ngIf="sujet.enable, else elseBlock">
-        <li style="--i: 5" >
-
-
-          <button class="détail btn" [routerLink]="[sujet.id]">Détail</button>
-          <div class="date" >
-            {{sujet.dateCreation | date:"dd/MM/yyyy"}}<br>
-            <ng-container *ngIf="!sujet.enable">
-              Sujet clos
-            </ng-container>
-            <ng-container *ngIf="sujet.hidden">
-              et caché
-            </ng-container>
-
-          </div>
-          <h3><a [routerLink]="[sujet.id]">{{sujet.titre}}</a></h3>
-          <div> par {{sujet.madeBy.firstName}} {{sujet.madeBy.lastName}}</div>
-          <br>
-          <div>
-            {{sujet.description}}
-          </div>
+        <!--      couleur du template en fonction de si il est activé ou pas-->
+        <ng-container *ngIf="sujet.enable, else elseBlock">
+          <li style="--i: 5" >
 
 
+            <button class="détail btn" [routerLink]="[sujet.id]">Détail</button>
+            <div class="date" >
+              {{sujet.dateCreation | date:"dd/MM/yyyy"}}<br>
+              <ng-container *ngIf="!sujet.enable">
+                Sujet clos
+              </ng-container>
+              <ng-container *ngIf="sujet.hidden">
+                et caché
+              </ng-container>
+
+            </div>
+            <h3><a [routerLink]="[sujet.id]">{{sujet.titre}}</a></h3>
+            <div> par {{sujet.madeBy.firstName}} {{sujet.madeBy.lastName}}</div>
+            <br>
+            <div>
+              {{sujet.description}}
+            </div>
 
 
-        </li>
+
+
+          </li>
+        </ng-container>
+        <ng-template #elseBlock>
+          <li style="--i: 1" >
+
+            <button class="détail btn" [routerLink]="[sujet.id]">Détail</button>
+            <div class="date" >
+              {{sujet.dateCreation | date:"dd/MM/yyyy"}}<br>
+              <ng-container *ngIf="!sujet.enable">
+                Sujet clos
+              </ng-container>
+              <ng-container *ngIf="sujet.hidden">
+                et caché
+              </ng-container>
+
+            </div>
+            <h3><a [routerLink]="[sujet.id]">{{sujet.titre}}</a></h3>
+            <div> par {{sujet.madeBy.firstName}} {{sujet.madeBy.lastName}}</div>
+            <br>
+            <div>
+              {{sujet.description}}
+            </div>
+
+          </li>
+        </ng-template>
+
+
       </ng-container>
-      <ng-template #elseBlock>
-        <li style="--i: 1" >
 
-          <button class="détail btn" [routerLink]="[sujet.id]">Détail</button>
-          <div class="date" >
-            {{sujet.dateCreation | date:"dd/MM/yyyy"}}<br>
-            <ng-container *ngIf="!sujet.enable">
-              Sujet clos
-            </ng-container>
-            <ng-container *ngIf="sujet.hidden">
-              et caché
-            </ng-container>
+      <!--    affichage pour un role non technobel-->
 
-          </div>
-          <h3><a [routerLink]="[sujet.id]">{{sujet.titre}}</a></h3>
-          <div> par {{sujet.madeBy.firstName}} {{sujet.madeBy.lastName}}</div>
-          <br>
-          <div>
-            {{sujet.description}}
-          </div>
+      <ng-container *ngIf="!sujet.hidden && currentUser!='ROLE_TECHNOBEL'">
+        <ng-container *ngIf="sujet.enable, else elseBlock">
+          <li style="--i: 5" >
 
-        </li>
-      </ng-template>
+            <button class="détail btn" [routerLink]="[sujet.id]">Détail</button>
+            <div class="date" >
+              {{sujet.dateCreation | date:"dd/MM/yyyy"}}<br>
 
 
-    </ng-container>
-
-<!--    affichage pour un role non technobel-->
-
-    <ng-container *ngIf="!sujet.hidden && currentUser!='ROLE_TECHNOBEL'">
-      <ng-container *ngIf="sujet.enable, else elseBlock">
-        <li style="--i: 5" >
-
-          <button class="détail btn" [routerLink]="[sujet.id]">Détail</button>
-          <div class="date" >
-            {{sujet.dateCreation | date:"dd/MM/yyyy"}}<br>
-
-
-          </div>
-          <h3><a [routerLink]="[sujet.id]">{{sujet.titre}}<ng-container *ngIf="!sujet.enable"> (clos)</ng-container></a></h3>
-          <div> par {{sujet.madeBy.firstName}} {{sujet.madeBy.lastName}}</div>
-          <br>
-          <div>
-            {{sujet.description}}
-          </div>
+            </div>
+            <h3><a [routerLink]="[sujet.id]">{{sujet.titre}}<ng-container *ngIf="!sujet.enable"> (clos)</ng-container></a></h3>
+            <div> par {{sujet.madeBy.firstName}} {{sujet.madeBy.lastName}}</div>
+            <br>
+            <div>
+              {{sujet.description}}
+            </div>
 
 
 
 
-        </li>
+          </li>
+        </ng-container>
+        <ng-template #elseBlock>
+          <li style="--i: 1" >
+
+            <button class="détail btn" [routerLink]="[sujet.id]">Détail</button>
+            <div class="date" >
+              {{sujet.dateCreation | date:"dd/MM/yyyy"}}<br>
+
+
+            </div>
+            <h3><a [routerLink]="[sujet.id]">{{sujet.titre}}<ng-container *ngIf="!sujet.enable"> (clos)</ng-container></a></h3>
+            <div> par {{sujet.madeBy.firstName}} {{sujet.madeBy.lastName}}</div>
+            <br>
+            <div>
+              {{sujet.description}}
+            </div>
+
+
+
+
+          </li>
+        </ng-template>
+        <!--  <li style="&#45;&#45;i: 1" *ngFor="let sujet of sujetList | filter:searchText | paginate: { itemsPerPage: 5, currentPage: page,totalItems:count }" >-->
+
       </ng-container>
-      <ng-template #elseBlock>
-        <li style="--i: 1" >
-
-          <button class="détail btn" [routerLink]="[sujet.id]">Détail</button>
-          <div class="date" >
-            {{sujet.dateCreation | date:"dd/MM/yyyy"}}<br>
-
-
-          </div>
-          <h3><a [routerLink]="[sujet.id]">{{sujet.titre}}<ng-container *ngIf="!sujet.enable"> (clos)</ng-container></a></h3>
-          <div> par {{sujet.madeBy.firstName}} {{sujet.madeBy.lastName}}</div>
-          <br>
-          <div>
-            {{sujet.description}}
-          </div>
-
-
-
-
-        </li>
-      </ng-template>
-<!--  <li style="&#45;&#45;i: 1" *ngFor="let sujet of sujetList | filter:searchText | paginate: { itemsPerPage: 5, currentPage: page,totalItems:count }" >-->
-
     </ng-container>
-  </ng-container>
-</ul>
+  </ul>
   <pagination-controls previousLabel="Prev"
                        nextLabel="Next"
                        (pageChange)="onTableDataChange($event)">

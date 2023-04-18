@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { SujetComponent } from './components/fonctions/sujet/sujet.component';
 
 import {AppRoutingModule} from "./app-routing.modules";
-import { HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { SujetCreateComponent } from './components/fonctions/sujet-create/sujet-create.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { SujetDetailsComponent } from './components/fonctions/sujet-details/sujet-details.component';
@@ -15,6 +15,7 @@ import { ArgumentCreateComponent } from './components/fonctions/argument-create/
 import { LoginComponent } from './components/auth/login/login.component';
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import {NgxPaginationModule} from "ngx-pagination";
+import {JwtInterceptor} from "./interceptors/jwt-interceptor.interceptor";
 
 
 
@@ -41,7 +42,7 @@ import {NgxPaginationModule} from "ngx-pagination";
 
 
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
