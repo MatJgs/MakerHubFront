@@ -8,7 +8,7 @@ export interface ArgumentForm{
 }
 export const ARGUMENT_FORM={
   'argument':['',[Validators.minLength(10),Validators.maxLength(300)]],
-  'avis':[],
+  'avis':['',[Validators.required]],
   'userLogin':[],
   'sujetId':[]
 }

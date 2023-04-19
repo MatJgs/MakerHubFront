@@ -21,6 +21,7 @@ export class ArgumentCreateComponent implements OnInit{
   argument!:Argument;
   username?:string;
 
+
   constructor(
     private readonly _argumentService: ArgumentService,
     private readonly _activatedRouter: ActivatedRoute,
@@ -35,14 +36,13 @@ export class ArgumentCreateComponent implements OnInit{
     this.sujetID=this._activatedRouter.snapshot.params['param'];
 
     this._sujetService.getOne(this.sujetID!).subscribe({
-      next: (sujet)=>{
-        this.sujet=sujet;
-      }
+      next: (sujet)=> this.sujet=sujet,
+
     })
   }
 
   onSubmit() {
-    console.log(this.form);
+
     if (this.form.valid) {
       this.username=this._authService.user?.username;
       this._argumentService.create(this.form.value,this.sujetID!,this.username!).subscribe({

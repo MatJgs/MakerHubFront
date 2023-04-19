@@ -3,6 +3,7 @@ import {Sujet} from "../../../models/sujet.model";
 import {SujetsService} from "../../../services/sujets.service";
 import {AuthService} from "../../../services/auth.service";
 
+
 @Component({
   selector: 'app-sujet',
   templateUrl: './sujet.component.html',
@@ -10,8 +11,8 @@ import {AuthService} from "../../../services/auth.service";
 })
 export class SujetComponent implements OnInit{
 
-  sujetList!:Sujet[];
-  sujetListNonCaché = this.sujetList;
+  sujetList:Sujet[]=new Array();
+  sujetListNonCache:Sujet[]=new Array();
   searchText:any;
   page: number = 1;
   count: number = 0;
@@ -26,27 +27,25 @@ export class SujetComponent implements OnInit{
     this._sujetService.getAll().subscribe({
       next:data => {
         this.sujetList = data;
-
+        this.fillSujetListNonCache();
       },
       error:console.error
     });
+
   }
   fillSujetListNonCache(){
     let j=0;
     for (let i = 0; i < this.sujetList.length; i++) {
-      if (this.sujetList[i].enable){
-        this.sujetListNonCaché[j]=this.sujetList[i];
+      if (!this.sujetList[i].hidden ){
+        this.sujetListNonCache[j] = this.sujetList[i]
         j++;
       }
-
 
     }
   }
 
   ngOnInit() {
     this.afficheSujets();
-    this.triParDateRecente();
-    this.fillSujetListNonCache()
 
   }
   onTableDataChange(event: any) {
@@ -54,59 +53,117 @@ export class SujetComponent implements OnInit{
     this.afficheSujets()
   }
   triParTitre(){
-    if (this.sujetList!=null){
-      this.sujetList.sort(function(a, b){
-        return a.titre.localeCompare(b.titre)});
-    }
+    if (this.currentUser=='ROLE_TECHNOBEL') {
+      if (this.sujetList != null) {
+        this.sujetList.sort(function (a, b) {
+          return a.titre.localeCompare(b.titre)
+        });
+      }
+    }else{
 
+
+      if (this.sujetListNonCache!=null){
+        this.sujetListNonCache.sort(function(a, b){
+          return a.titre.localeCompare(b.titre)});
+      }
+    }
   }
   triParDateRecente(){
     this.estTrieChrono=false;
-    if (this.sujetList!=null) {
-      this.sujetList.sort(function (a, b) {
-        const firstDate = new Date(a.dateCreation);
-        const secondDate = new Date(b.dateCreation);
+    if (this.currentUser=='ROLE_TECHNOBEL'){
+      if (this.sujetList!=null) {
+        this.sujetList.sort(function (a, b) {
+          const firstDate = new Date(a.dateCreation);
+          const secondDate = new Date(b.dateCreation);
 
-        if (firstDate > secondDate) return -1;
-        if (firstDate < secondDate) return 1;
-        return 0;
-      });
-    }
+          if (firstDate > secondDate) return -1;
+          if (firstDate < secondDate) return 1;
+          return 0;
+        });
+      }}else{
+      if (this.sujetListNonCache!=null) {
+        this.sujetListNonCache.sort(function (a, b) {
+          const firstDate = new Date(a.dateCreation);
+          const secondDate = new Date(b.dateCreation);
+
+          if (firstDate > secondDate) return -1;
+          if (firstDate < secondDate) return 1;
+          return 0;
+        });
+      }}
   }
   triParDateVieille(){
     this.estTrieChrono=true;
-    if (this.sujetList!=null) {
-      this.sujetList.sort(function (a, b) {
-        const firstDate = new Date(a.dateCreation);
-        const secondDate = new Date(b.dateCreation);
+    if (this.currentUser=='ROLE_TECHNOBEL') {
+      if (this.sujetList != null) {
+        this.sujetList.sort(function (a, b) {
+          const firstDate = new Date(a.dateCreation);
+          const secondDate = new Date(b.dateCreation);
 
-        if (firstDate < secondDate) return -1;
-        if (firstDate > secondDate) return 1;
-        return 0;
-      });
-    }
+          if (firstDate < secondDate) return -1;
+          if (firstDate > secondDate) return 1;
+          return 0;
+        });
+      }
+    }else{
+
+
+      if (this.sujetListNonCache!=null) {
+        this.sujetListNonCache.sort(function (a, b) {
+          const firstDate = new Date(a.dateCreation);
+          const secondDate = new Date(b.dateCreation);
+
+          if (firstDate < secondDate) return -1;
+          if (firstDate > secondDate) return 1;
+          return 0;
+        });
+      }}
   }
   triParSujetEnable(){
-    if (this.sujetList!=null) {
-      this.estTrieEnable=false;
-      this.sujetList.sort(function (a) {
-        if (a.enable) return 1;
-        else return -1
-      });
+    if (this.currentUser=='ROLE_TECHNOBEL') {
+      if (this.sujetList != null) {
+        this.estTrieEnable = false;
+        this.sujetList.sort(function (a) {
+          if (a.enable) return 1;
+          else return -1
+        });
 
-    }
+      }
+    }else{
+
+
+      if (this.sujetListNonCache!=null) {
+        this.estTrieEnable=false;
+        this.sujetListNonCache.sort(function (a) {
+          if (a.enable) return 1;
+          else return -1
+        });
+
+      }}
   }
   triParSujetDisable(){
-    if (this.sujetList!=null) {
-      this.estTrieEnable=true;
-      this.sujetList.sort(function (a) {
-        if (!a.enable) return 1;
-        else return -1
-      });
+    if (this.currentUser=='ROLE_TECHNOBEL'){
+      if (this.sujetList!=null) {
+        this.estTrieEnable=true;
+        this.sujetList.sort(function (a) {
+          if (!a.enable) return 1;
+          else return -1
+        });
 
+      }
+    }else {
+
+
+      if (this.sujetListNonCache!=null) {
+        this.estTrieEnable=true;
+        this.sujetListNonCache.sort(function (a) {
+          if (!a.enable) return 1;
+          else return -1
+        });
+
+      }
     }
   }
-
 
 
 }

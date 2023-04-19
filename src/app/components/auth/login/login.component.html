@@ -3,6 +3,7 @@
     <h2>Se connecter</h2><br>
     <input type="text" placeholder="username" class="form-control" formControlName="username" required><br>
     <input type="password" placeholder="password" class="form-control" formControlName="password" required><br>
+    <p *ngIf="estInvalide" style="color: #b22226">Username ou mot de passe invalide</p>
 
     <button type="submit" class="btn">Login</button>
   </form>
